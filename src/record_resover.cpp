@@ -8,7 +8,7 @@
 
 #include "record_resolver.h"
 
-const std::locale RecordResolver::defaultLocale("zh_CN.UTF-8");
+const std::locale RecordResolver::defaultLocale("C");
 
 RecordResolver::RecordResolver(
    const std::vector<std::wstring>& keywords,

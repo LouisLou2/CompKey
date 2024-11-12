@@ -1,0 +1,34 @@
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+directedEdgeCount: 7784130
+init graph time: 7.71805s
+calculate using single thread time: 5.80507s
+evaluate keywords num: 59
+
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+directedEdgeCount: 7784130
+init graph time: 7.82577s
+threadNum: 2
+calculate using multithreading time: 4.41317s
+evaluate keywords num: 59
+
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+directedEdgeCount: 7784130
+init graph time: 7.67113s
+threadNum: 4
+calculate using multithreading time: 2.75567s
+evaluate keywords num: 59
+
+
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+directedEdgeCount: 7784130
+init graph time: 7.62675s
+threadNum: 8
+calculate using multithreading time: 1.51284s
+evaluate keywords num: 59
+
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+directedEdgeCount: 7784130
+init graph time: 7.63788s
+threadNum: 12
+calculate using multithreading time: 1.50883s
+evaluate keywords num: 59

@@ -5,13 +5,16 @@
 #include <iostream>
 
 void RecordBatchResolver::updateCountMap(const std::vector<std::string>& words) {
+  if (words.size() <= 1) {
+    return;
+  }
   wordIdsARec.resize(words.size());
   for (uint32_t i = 0;i < words.size(); ++i) {
     // 如果能查到
     auto iter = wordToIdMap.find(words[i]);
     if (iter != wordToIdMap.end()) {
       wordIdsARec[i] = iter->second;
-      ++idToCountList[iter->second];
+      idToCountList[iter->second] += words.size()-1;
     }else {
       // 需要新增
       wordIdsARec[i] = wordToIdMap.size();
@@ -20,7 +23,7 @@ void RecordBatchResolver::updateCountMap(const std::vector<std::string>& words) 
       // 增加id->content的映射
       idToContentList.push_back(words[i]);
       // 增加id->count的映射
-      idToCountList.push_back(1);
+      idToCountList.push_back(words.size()-1);
     }
   }
   // 开始统计联合
@@ -35,7 +38,7 @@ void RecordBatchResolver::updateCountMap(const std::vector<std::string>& words) 
 }
 
 void RecordBatchResolver::dump() {
-  // node first
+  // note first
   // first line
   // id:ID(Keyword),word:String,num:INT,:LABEL
   nodeFile << "wordId:ID,"<<"word:String,num:INT,:LABEL" << '\n';

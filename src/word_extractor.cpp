@@ -4,8 +4,8 @@
 #include <word_extractor.h>
 
 std::unique_ptr<cppjieba::MixSegment> WordExtractor::seg = nullptr;
-const std::string WordExtractor::mpSegDict = "/home/leo/CLionProjects/compkey/resource/dict/jieba.dict.utf8";
-const std::string WordExtractor::hmmSegDict = "/home/leo/CLionProjects/compkey/resource/dict/hmm_model.utf8";
+const std::string WordExtractor::mpSegDict = "D:/projects/CompKey1/resource/dict/jieba.dict.utf8";
+const std::string WordExtractor::hmmSegDict = "D:/projects/CompKey1/resource/dict/hmm_model.utf8";
 
 /* 名词，动词，形容词，副词，成语
  * 数词和英语都不会包含其中, 所以数字，网址，邮箱等都不会被提取

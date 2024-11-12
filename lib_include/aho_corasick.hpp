@@ -78,7 +78,7 @@ namespace aho_corasick {
 		using interval_collection = std::vector<T>;
 
 	private:
-		// class node
+		// class note
 		class node {
 			enum direction {
 				LEFT, RIGHT

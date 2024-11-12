@@ -5,6 +5,7 @@
 #ifndef WORD_EXTRACTOR_H
 #define WORD_EXTRACTOR_H
 #include <memory>
+#include <optional>
 #include <cppjieba/MixSegment.hpp>
 #include "small_set.h"
 

@@ -2,11 +2,18 @@ cmake_minimum_required(VERSION 3.29)
 project(compkey)
 
 set(CMAKE_CXX_STANDARD 23)
+#cmake_policy(SET CMP0167 NEW)
+
 # 设置源代码目录
 set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
+set(Boost_ARCHITECTURE "-x64")
 
-find_package ( uchardet )
+#find_package ( uchardet )
 # 查找 Boost.Locale 库
+set(BOOST_ROOT "D:/dev/boost_1_86_0/")
+set(BOOST_LIBRARYDIR "D:/dev/boost_1_86_0/stage/")  # 指定Boost库文件目录
+set(Boost_USE_STATIC_LIBS ON)
+
 find_package(Boost REQUIRED COMPONENTS locale)
 
 # 递归查找所有的 .cpp 文件
@@ -21,31 +28,27 @@ endforeach()
 message("Source files: ${ALL_SOURCE_FILES}")
 
 add_executable(compkey
-    main.cpp
-    ${ALL_SOURCE_FILES}
-        include/small_set.h
+        main.cpp
+        ${ALL_SOURCE_FILES}
+        include/comp.h
+        include/test_compkey_calc.h
+        src/test_compkey_calc.cpp
+        test.h
 )
-# 添加 uchardet 的 lac 目录
-target_include_directories(
-    compkey PRIVATE
-    ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/lib_include
-#    "/home/leo/Toolkit/fluid_inference/fluid_inference_install_dir/paddle/include"
-)
-## 设置包含所有 .a 文件的路径
-#set(LIBRARY_PATH "/home/leo/Toolkit/fluid_inference")
 
-## 查找路径中的所有 .a 文件
-#file(GLOB_RECURSE ALL_LIBS "${LIBRARY_PATH}/*.a")
-#
-#message("All libs: ${ALL_LIBS}")
+target_include_directories(
+        compkey PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_SOURCE_DIR}/lib_include
+        ${Boost_INCLUDE_DIRS}
+)
+
+message("Boost include dirs: ${Boost_INCLUDE_DIRS}")
+message("cmake source dir: ${CMAKE_SOURCE_DIR}")
+message("cmake binary dir: ${CMAKE_BINARY_DIR}")
+message("uchardet include dirs: ${uchardet_INCLUDE_DIRS}")
 
 # 链接 uchardet 库
-target_link_libraries (
-   compkey PRIVATE
-        ${CMAKE_SOURCE_DIR}/lib/libuchardet.a
-#        ${CMAKE_SOURCE_DIR}/lib/liblac.a
-#        ${ALL_LIBS}
-)
+target_link_libraries ( compkey PRIVATE "D:/projects/CompKey/lib/libuchardet-mingw64.a" )
 # 链接 Boost.Locale
 target_link_libraries(compkey PRIVATE Boost::locale)
