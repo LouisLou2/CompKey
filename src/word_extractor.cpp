@@ -10,15 +10,18 @@ const std::string WordExtractor::hmmSegDict = "/home/leo/CLionProjects/compkey/r
 /* 名词，动词，形容词，副词，成语
  * 数词和英语都不会包含其中, 所以数字，网址，邮箱等都不会被提取
  */
-const std::set<char> WordExtractor::defaultSymbols = {'n', 'v', 'a', 'd','i'};
+const std::set<char> WordExtractor::defaultSymbols = {'n','i'};
 
 WordExtractor::WordExtractor(
+ uint8_t maxWordPerRec,
   bool unique,
   bool rmSemanticallyEmpty,
   std::optional<std::set<char>> symbols
 ):
   unique(unique),
-  rmSemanticallyEmpty(rmSemanticallyEmpty) {
+  rmSemanticallyEmpty(rmSemanticallyEmpty),
+  maxWordsPerRec(maxWordPerRec),
+  strSet(maxWordPerRec){
   if (symbols) {
     this->symbolsCopyIfNeed = std::move(symbols.value());
     this->symbols = &this->symbolsCopyIfNeed;
@@ -30,10 +33,13 @@ WordExtractor::WordExtractor(
 
 WordExtractor::WordExtractor(
   std::set<char>&& symbols,
+  uint8_t maxWordPerRec,
   bool unique,
   bool rmSemanticallyEmpty):
   unique(unique),
   rmSemanticallyEmpty(rmSemanticallyEmpty),
+  maxWordsPerRec(maxWordPerRec),
+  strSet(maxWordPerRec),
   symbolsCopyIfNeed(std::move(symbols)),
   symbols(&symbolsCopyIfNeed) {
   assert(!this->symbols->empty());

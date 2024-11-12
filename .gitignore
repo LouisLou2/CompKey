@@ -4,11 +4,8 @@
 #self
 resource/*.TRAIN
 resource/*.TEST
-resource/model/
-resource/stat/
-resource/stat_new/
-resource/word/
-resource/word_1/
+resource/model/*
+
 
 
 # User-specific stuff

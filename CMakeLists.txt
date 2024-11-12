@@ -23,19 +23,29 @@ message("Source files: ${ALL_SOURCE_FILES}")
 add_executable(compkey
     main.cpp
     ${ALL_SOURCE_FILES}
-        include/word_extractor.h
-        src/word_extractor.cpp
-        include/record_resolver.h
-        src/record_resover.cpp
+        include/small_set.h
 )
-# 添加 uchardet 的 include 目录
+# 添加 uchardet 的 lac 目录
 target_include_directories(
     compkey PRIVATE
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_SOURCE_DIR}/lib_include
+#    "/home/leo/Toolkit/fluid_inference/fluid_inference_install_dir/paddle/include"
 )
+## 设置包含所有 .a 文件的路径
+#set(LIBRARY_PATH "/home/leo/Toolkit/fluid_inference")
+
+## 查找路径中的所有 .a 文件
+#file(GLOB_RECURSE ALL_LIBS "${LIBRARY_PATH}/*.a")
+#
+#message("All libs: ${ALL_LIBS}")
 
 # 链接 uchardet 库
-target_link_libraries ( compkey PRIVATE ${CMAKE_SOURCE_DIR}/lib/libuchardet.a)
+target_link_libraries (
+   compkey PRIVATE
+        ${CMAKE_SOURCE_DIR}/lib/libuchardet.a
+#        ${CMAKE_SOURCE_DIR}/lib/liblac.a
+#        ${ALL_LIBS}
+)
 # 链接 Boost.Locale
 target_link_libraries(compkey PRIVATE Boost::locale)

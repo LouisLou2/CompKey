@@ -25,7 +25,7 @@ RecordResolver::RecordResolver(
    uniqueWordInARecord(uniqueWordInARecord),
    rmSemanticallyEmpty(rmSemanticallyEmpty),
    enableCache(enableCache),
-   wordExtractor(uniqueWordInARecord, rmSemanticallyEmpty, symbols ? std::optional(std::move(symbols.value())): std::nullopt) {
+   wordExtractor(WordExtractor::maxWordNumPerRecord,uniqueWordInARecord, rmSemanticallyEmpty, symbols ? std::optional(std::move(symbols.value())): std::nullopt) {
   if (!checkKeywords(keywords)) {
     throw std::invalid_argument("Invalid keywords.");
   }
