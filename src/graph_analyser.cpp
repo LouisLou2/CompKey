@@ -65,7 +65,7 @@ void GraphAnalyser::parseGraph(std::ifstream &file) {
     }
   }
   assert (graph.size() == idToWordList.size());
-  std::cout << "directedEdgeCount: " << directedEdgeCount << std::endl;
+  std::cout << "directed edge count: " << directedEdgeCount << std::endl;
 }
 
 void GraphAnalyser::initGraph(const std::string& nodePath, const std::string& graphPath) {
@@ -107,12 +107,12 @@ std::vector<Comp> GraphAnalyser::calc(uint32_t s, int orderedNum) const{
   for (const auto& [a, sa]: edge) {
     // a即是中介词
     double c = static_cast<double>(sa) / idToWordList[s].occurCount / (idToWordList[a].occurCount - sa);
-    if ( idToWordList[s].occurCount == 0) {
-      int x =0;
-    }
-    if (idToWordList[a].occurCount == sa) {
-      int x =0;
-    }
+    // if ( idToWordList[s].occurCount == 0) {
+    //   int x =0;
+    // }
+    // if (idToWordList[a].occurCount == sa) {
+    //   int x =0;
+    // }
     // 寻找所有与a一起出现的词
     const std::unordered_map<uint32_t, uint32_t>& edge2 = graph[a];
     for (const auto& [k, ka]: edge2) {

@@ -31,7 +31,7 @@ void CompKeyCalcTest::dump(const std::string &dumpPath) const {
     std::vector<std::string> candidateWords = analyser->getWords(comps);
     file<<'['<<wordIds[i]<<']'<<words[i]<<":\n";
     for (int j=0;j<comps.size();++j) {
-      file<<'['<<comps[i].score<<']'<<'['<<comps[j].id<<']'<<candidateWords[j]<<' ';
+      file<<'['<<comps[j].score<<']'<<'['<<comps[j].id<<']'<<candidateWords[j]<<' ';
     }
     file<<'\n';
   }
@@ -44,12 +44,11 @@ void CompKeyCalcTest::singleThreadTest(int orderedNum){
     compsList[i] = analyser->calc(wordIds[i], orderedNum);
   }
 }
-
 void CompKeyCalcTest::multiThreadTest(uint16_t threadNum, int orderedNum){
   compsList.resize(words.size());
   std::vector<std::thread> threads;
   threadNum = std::min(static_cast<size_t>(threadNum), words.size());
-  std::cout << "threadNum: " << threadNum << std::endl;
+  std::cout << "working thread number: " << threadNum << std::endl;
   threads.reserve(threadNum);
   // 将任务平均分配给各个线程
   size_t begin = 0;

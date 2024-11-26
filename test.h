@@ -14,13 +14,13 @@
 #include <aho_corasick.hpp>
 #include <thread>
 
-void testOfEncodingDetect() {
+inline void testOfEncodingDetect() {
     std::string file_path = "/home/leo/CLionProjects/compkey/resource/user_tag_query.10W.TRAIN";
     std::string target_file_path = "/home/leo/CLionProjects/compkey/resource/user_tag_query.utf8.10W.TRAIN";
     CharsetConverter::convertToUtf8(file_path, target_file_path);
 }
 
-void testOnlyExtractMainWords() {
+inline void testOnlyExtractMainWords() {
     auto now = std::chrono::high_resolution_clock::now();
     std::vector<std::wstring> keywords = {
         L"动物", L"植物", L"水果", L"蔬菜", L"葡萄酒", L"华为", L"苹果", L"鼠标", L"电脑",
@@ -45,7 +45,7 @@ void testOnlyExtractMainWords() {
     std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - now).count() << "ms" << std::endl;
 }
 
-void testBatchResolve() {
+inline void testBatchResolve() {
     // WordExtractor ex;
     // std::vector<std::string> words;
     // ex.extractWords("借宁波", words);
@@ -76,7 +76,7 @@ void testBatchResolve() {
 }
 
 
-int countLines(const std::string& filePath) {
+inline int countLines(const std::string& filePath) {
   std::ifstream file(filePath);
   if (!file.is_open()) {
     std::cerr << "Error: Could not open the file!" << std::endl;
@@ -95,7 +95,7 @@ int countLines(const std::string& filePath) {
   return lineCount;
 }
 
-void testGraphAdapter() {
+inline void testGraphAdapter() {
   std::string nodePath = "D:/projects/CompKey1/resource/neo4j_import_new/node.csv";
   std::string edgePath = "D:/projects/CompKey1/resource/neo4j_import_new/edge.csv";
   GraphAdapter graphAnalyser;
@@ -103,7 +103,7 @@ void testGraphAdapter() {
   graphAnalyser.dumpGraph("D:/projects/CompKey1/resource/graph_dump_new/graph.txt");
 }
 
-void testCompKey() {
+inline void testCompKey() {
   std::string nodePath = "D:/projects/CompKey1/resource/graph_dump_new/node.csv";
   std::string graphPath = "D:/projects/CompKey1/resource/graph_dump_new/graph.txt";
 
