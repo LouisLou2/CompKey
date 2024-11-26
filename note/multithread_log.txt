@@ -32,3 +32,81 @@ init graph time: 7.63788s
 threadNum: 12
 calculate using multithreading time: 1.50883s
 evaluate keywords num: 59
+
+
+/*--------------------------------------------------------*/
+
+D:\projects\CompKey1\cmake-build-debug\compkey.exe
+provided words size: 850
+enabled shuffle
+directed edge count: 7784130
+init graph time: 7339ms
+
+Using 1 threads, calculate time: 31769ms
+evaluate keywords num: 500
+
+working thread number: 2
+Using 2 threads, calculate time: 22183ms
+evaluate keywords num: 500
+
+working thread number: 4
+Using 4 threads, calculate time: 12593ms
+evaluate keywords num: 500
+
+working thread number: 8
+Using 8 threads, calculate time: 7459ms
+evaluate keywords num: 500
+
+working thread number: 12
+Using 12 threads, calculate time: 5899ms
+evaluate keywords num: 500
+
+working thread number: 16
+Using 16 threads, calculate time: 5487ms
+evaluate keywords num: 500
+
+working thread number: 20
+Using 20 threads, calculate time: 5209ms
+evaluate keywords num: 500
+
+working thread number: 24
+Using 24 threads, calculate time: 5388ms
+evaluate keywords num: 500
+
+working thread number: 28
+Using 28 threads, calculate time: 5608ms
+evaluate keywords num: 500
+
+working thread number: 32
+Using 32 threads, calculate time: 5903ms
+evaluate keywords num: 500
+
+working thread number: 36
+Using 36 threads, calculate time: 5873ms
+evaluate keywords num: 500
+
+working thread number: 40
+Using 40 threads, calculate time: 5513ms
+evaluate keywords num: 500
+
+working thread number: 44
+Using 44 threads, calculate time: 5590ms
+evaluate keywords num: 500
+
+working thread number: 48
+Using 48 threads, calculate time: 6222ms
+evaluate keywords num: 500
+
+working thread number: 52
+Using 52 threads, calculate time: 5256ms
+evaluate keywords num: 500
+
+working thread number: 56
+Using 56 threads, calculate time: 5308ms
+evaluate keywords num: 500
+
+working thread number: 60
+Using 60 threads, calculate time: 5402ms
+evaluate keywords num: 500
+
+Process finished with exit code 0

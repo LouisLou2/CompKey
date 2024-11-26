@@ -49,14 +49,30 @@ int main() {
 
   CompKeyCalcTest test(words, &graphAnalyser);
 
-  start = std::chrono::system_clock::now();
-  test.multiThreadTest(16, 200);
-  end = std::chrono::system_clock::now();
-  elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-  std::cout << "calculate using multithreading time: " << elapsed.count() << "ms" << std::endl;
-  uint32_t valid = test.getNumNotEmpty();
-  std::cout << "evaluate keywords num: " << valid << std::endl;
+  std::array<int, 17> threadNums = {1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60};
+  // 遍历不同的线程数
+  for (int threadCount : threadNums) {
+    std::cout << '\n';
+    start = std::chrono::system_clock::now();
 
+    if (threadCount == 1) {
+      // 调用单线程测试，传入排序的数量（假设是100）
+      test.singleThreadTest(100);
+    } else {
+      // 调用多线程测试，传入当前的线程数和任务数（假设任务数是100）
+      test.multiThreadTest(threadCount, 100);
+    }
+
+    end = std::chrono::system_clock::now();
+    elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    // 打印每个线程数的执行时间
+    std::cout << "Using " << threadCount << " threads, calculate time: " << elapsed.count() << "ms" << std::endl;
+
+    // 获取有效的关键字数量并打印
+    uint32_t valid = test.getNumNotEmpty();
+    std::cout << "evaluate keywords num: " << valid << std::endl;
+  }
 
   test.dump("D:/projects/CompKey1/task/task2/sample.txt");
   // testCompKey();

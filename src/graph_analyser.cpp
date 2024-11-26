@@ -104,6 +104,7 @@ std::vector<Comp> GraphAnalyser::calc(uint32_t s, int orderedNum) const{
   std::unordered_map<uint32_t,double> kscores;
   // 寻找所有与id一起出现的词
   const std::unordered_map<uint32_t, uint32_t>& edge = graph[s];
+
   for (const auto& [a, sa]: edge) {
     // a即是中介词
     double c = static_cast<double>(sa) / idToWordList[s].occurCount / (idToWordList[a].occurCount - sa);
@@ -118,9 +119,6 @@ std::vector<Comp> GraphAnalyser::calc(uint32_t s, int orderedNum) const{
     for (const auto& [k, ka]: edge2) {
       if (k == s) {
         continue;
-      }
-      if(k==8413) {
-        int x=0;
       }
       kscores[k] += c * ka;
     }
